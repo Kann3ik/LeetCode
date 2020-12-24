@@ -6,6 +6,9 @@ var gameOfLife = function(board) {
         }
     }
 
+    let arr = board.map(function (item) {
+	return [...item]
+});
     console.log(board);
 
     for(let i = 0; i < board.length; i++){
@@ -42,18 +45,58 @@ var gameOfLife = function(board) {
                 if(board[i][j+1] === 1) cnt++;
                 else die++;
 
-                console.log('i - ' + i + ' j - ' + j + ' - живых = ' + cnt + ' - мертвых = ' + die);
+                
+            }
+            else if (board[i][j] === 0){
+                cnt = 0;
+                die = 0;
+                //up-left
+                if(i - 1 != -1 && j - 1 != -1 && board[i-1][j-1] === 1) cnt++;
+                else die++;
+                //up-right
+                if(i - 1 != -1 && j + 1 != 3 && board[i-1][j+1] === 1) cnt++;
+                else die++;
+
+                //up
+                if(i - 1 != -1 && board[i-1][j] === 1) cnt++;
+                else die++;
+                //down
+                if(i + 1 != 4 && board[i+1][j] === 1) cnt++;
+                else die++;
+
+                //down-left
+                if(i + 1 != 4 && j - 1 != -1 && board[i+1][j-1] === 1) cnt++;
+                else die++;
+                //down-right
+                if(i + 1 != 4 && j + 1 != 3 && board[i+1][j+1] === 1) cnt++;
+                else die++;
+
+                //left
+                if(board[i][j-1] === 1) cnt++;
+                else die++;
+                //right
+                if(board[i][j+1] === 1) cnt++;
+                else die++;
+
+                
             }
 
-            // if(cnt < 2 || cnt > 3) {
-            //     board[i][j] = 0;
-            // }
+            console.log('i - ' + i + ' j - ' + j + ' - живых = ' + cnt + ' - мертвых = ' + die);
             
+             if(board[i][j] === 1 && (cnt < 2 || cnt > 3)) {
+                 arr[i][j] = 0;
+             }
+            else if(board[i][j] === 1 && (cnt === 2 || cnt === 3)) {
+                 arr[i][j] = 1;
+             }
+            else if(board[i][j] === 0 && cnt === 3) {
+                 arr[i][j] = 1;
+             }
         }
     }
 
 
-    // console.log(board);
+     console.log(arr);
     // return board;
 };
 
