@@ -30,3 +30,37 @@
 
 // let nums = [6,2,6,5,1,2];
 // console.log(arrayPairSum(nums));
+
+
+//869. Reordered Power of 2
+// var reorderedPowerOf2 = function(N) {
+//     for(let i = 0; i < N / 2; i++){
+//         if(Math.pow(2,i) === N)
+//             return true;
+//     }
+    
+//     N = N.toString();
+//     N = N.split();
+//     N = N.reverse();
+//     console.log(N);
+
+
+
+//     return false;
+// };
+
+// let N = 46;
+// console.log(reorderedPowerOf2(N));
+
+
+
+
+
+
+
+  
+
+
+
+ 
+
